@@ -26,10 +26,18 @@ app.get("/store/getAllUser",(req,res)=>{
     const cb=(err,results)=>{
    if(err) res.status(500).send(err)
    else res.json(results)
-   console.log("post deleted")
+   console.log("all users")
   }
-  db.getAllUser(cb)
-  })
+  db.getAllUser(cb)})
+
+app.get("/store/comments",(req,res)=>{
+  const cb=(err,results)=>{
+    if(err) res.status(500).send(err)
+    else res.json(results)
+    console.log("all comments")
+  }
+  db.getAllComments(cb)
+})
 //get one post for search
 app.get("/store/getOne/:producName",(req,res)=>{
     
@@ -44,15 +52,14 @@ db.getOne(req.params.producName,cb)
 // new post
 
 app.post("/store/postNew",(req,res)=>{
-    const post=req.body
-    const cb=(err,results)=>{
-        if(err) res.status(409).send(err)
- else res.status(201).json(results)
-    }
-    db.addNew(post,cb)
+  const sql =`INSERT INTO posts(idposts,image, producName,category,price, contactNumber,quantity, users_idusers) VALUES("${req.body.idposts}","${req.body.image}","${req.body.producName}","${req.body.category}","${req.body.price}","${req.body.contactNumber}","${req.body.quantity}","${req.body.users_idusers}")`
+  db.connection.query(sql, (err,result)=>{
+    if(err) console.log(err)
+    else res.send(result)
+  })
 })
 
-//post a new user 
+//a new user 
 app.post("/store/postNewUser",(req,res)=>{
     const post=req.body
     const cb=(err,results)=>{
@@ -61,20 +68,32 @@ app.post("/store/postNewUser",(req,res)=>{
     }
     db.addNewUser(post,cb)
 })
-
+app.post("/store/comments",(req,res)=>{
+  const comment=req.body
+  const cb=(err,result)=>{
+    if(err) res.status(409).send(err)
+    else res.status(201).json(result)
+  
+  }
+  db.addcomment(comment,cb)
+})
 //delete one post 
 app.delete("/store/deletePost/:id", (req, res) => {
-    const id = req.params.id;
-    console.log(id);
-    const cb = (err, results) => {
-      if (err) res.status(500).send(err);
-      else res.status(204).json(results);
-    };
-    db.deletePost(id, cb);
-  });
-
+  const id = req.params.id;
+  const cb = (err, results) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send(err);
+    } else {
+      console.log(`Deleted post with id ${id}`);
+      res.status(204).send();
+    }
+  };
+  db.deletePost(id, cb);
+});
 //update one post 
 app.put("/store/updatePost/:id",(req,res)=>{
+  console.log("updating")
     const id=req.params.id
     const cb=(err,results)=>{
       if(err) res.status(409).send(err)

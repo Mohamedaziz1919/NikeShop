@@ -21,6 +21,12 @@ const getAll=(cb)=>{
       cb(err,res)
     })
   };
+  const getAllComments=(cb)=>{
+    const sql='SELECT * FROM `comments`'
+    connection.query(sql,(err,res)=>{
+      cb(err,res)
+    })
+  }
 // get one post for search
 const getOne = (producName, cb) => {
   const sql = `SELECT * FROM posts WHERE producName="${producName}"`;
@@ -32,13 +38,20 @@ const getOne = (producName, cb) => {
 // post queries of users and posts :
 const addNew=(posts,cb)=>{
   const sql ="INSERT INTO `posts` SET ?"
-  connection.query(sql,posts,(err,res)=>{
-    cb(err,res)
+  connection.query(sql, (err,result)=>{
+    if (err) res.send(err);
+    else res.send(result)
   })
 };
 const addNewUser=(posts,cb)=>{
   const sql ="INSERT INTO `users` SET ?"
   connection.query(sql,posts,(err,res)=>{
+    cb(err,res)
+  })
+}
+const addcomment=(comments,cb)=>{
+  const sql="INSERT INTO `comments` SET ?"
+  connection.query (sql,comments,(err,res)=>{
     cb(err,res)
   })
 }
@@ -51,7 +64,7 @@ const deletePost=(id,cb)=>{
 //update post 
 
 const updatePost=(id,posts,cb)=>{
-const sql =`UPDATE posts SET ? WHERE idposts=${id}`
+const sql =`UPDATE posts SET ?  WHERE idposts=${id}`
 connection.query(sql,posts,(err,res)=>{
   cb(err,res)
 })
@@ -63,7 +76,9 @@ module.exports = {connection ,
   getAll,
   getOne,
   getAllUser,
+  getAllComments,
   addNew,
   addNewUser,
+  addcomment,
 deletePost,
 updatePost }

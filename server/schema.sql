@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `nikeshop`.`posts` (
   `contactNumber` VARCHAR(50) NOT NULL,
   `quantity` VARCHAR(45) NOT NULL,
   `users_idusers` INT NOT NULL,
-  PRIMARY KEY (`idposts`, `users_idusers`,`idusers`),
+  PRIMARY KEY (`idposts`),
   INDEX `fk_posts_users_idx` (`users_idusers` ASC) VISIBLE,
   CONSTRAINT `fk_posts_users`
     FOREIGN KEY (`users_idusers`)

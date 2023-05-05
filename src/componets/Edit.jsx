@@ -1,22 +1,31 @@
 import React,{useState} from 'react'
 
-function Edit({e}) {
-    // const [show, setShow] = useState(false);
-    const [idposts, setIdposts] = useState(e.idposts);
-    const [image, setImage] = useState(e.image);
-    const [producName, setProducName] = useState(e.producName);
-    const [category, setCategory] = useState(e.category);
-    const [price, setPrice] = useState(e.price);
-    const [contactNumber, setContactNumber] = useState(e.contactNumber);
+function Edit(props) {
+    const [idposts, setIdposts] = useState(props.e.idposts);
+    const [image, setImage] = useState(props.e.image);
+    const [producName, setProducName] = useState(props.e.producName);
+    const [category, setCategory] = useState(props.e.category);
+    const [price, setPrice] = useState(props.e.price);
+    const [contactNumber, setContactNumber] = useState(props.e.contactNumber);
     var shop={
-        idposts:idposts,
+        idposts:Math.floor(Math.random() * 1000000),
         image: image,
         producName:producName,
         category:category,
         price:price,
         contactNumber:contactNumber,
     }
+
+    
+    const handleUpdate = (id) => {
+      
+      props.updatePost(id, shop);
+     
+      // props.setShow(!props.show);
+    };
   return (
+    <div>
+         {props.showEdit?(
     <div>
          <>
          <input
@@ -44,9 +53,11 @@ function Edit({e}) {
             value={contactNumber}
             onChange={(e) => setContactNumber(e.target.value)}
           />
-          <button >Submit</button>
-        </>
+          <button onClick={() => {handleUpdate(props.e.idposts,shop);window.location.reload(true);}} >Submit</button>
+          </>
     </div>
+          ):null}  
+          </div>
   )
 }
 
