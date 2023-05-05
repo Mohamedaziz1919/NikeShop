@@ -31,7 +31,9 @@ function AddPost({ AddShop }) {
 
   return (
     <>
+    <nav className='nav'>
       <button onClick={handleShow} className='btn3'>Add New Post</button>
+      </nav>
       {show && (
         <div className='post'>
           < >
