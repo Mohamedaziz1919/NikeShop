@@ -41,8 +41,8 @@ function DetailsPost(props) {
               {/* <h3  className="card-contact" >{props.e.contactNumber}</h3> */}
               <h3 className="card-quantity">{props.e.quantity}</h3>
               </div>
-              <Edit e={props.e}  updatePost={props.updatePost} showEdit={showEdit}/>
             </div>
+            <Edit e={props.e}  updatePost={props.updatePost} showEdit={showEdit}/>
     </div>
    
   )

@@ -1,31 +1,20 @@
 .card {
   min-height: 350px;
   margin: 20px;
-  /* list-style: none; */
   border: 1px solid #77777769;
   background-color: #fdfdfd;
   border-radius: 4px;
   padding: 30px 40px 0px 50px;
   box-shadow: 0 0 1em #80808066;
-  width: 250px; /* adjust as needed */
-  display: "flex" ;
-   flex-direction:"column"; /* change from row to column */
-   justify-content: "center";
-   flex-wrap:  "wrap"; 
-grid-gap: 6rem;
-grid-template-columns: repeat(zuto fit ,minmax(30rem  ));
-align-items: center;
+  width: 250px;
+  display: inline-block; /* change from flex to inline-block */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
-.container2{
-  /* position: relative; */
-  /* display: grid;
-  grid-template-columns: 100px 100px 100px; */
-  /* flex-direction: row; */
-  /* justify-content: center;
-  flex-wrap: wrap; */
-  /* align-items: center; */
-}
+
+
 .container{
   display: flex;
   /* flex-direction: row; */
@@ -115,4 +104,108 @@ font-family: center;
 .btn2:hover {
   background-color: #F7FAFA;
   border-color: #D5D9D9;
+}
+/* ------ */
+/* css of nav bar with search */
+.nav{
+  background-color: #000000;
+  
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+}
+.search input {
+  
+}
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  margin-right: 20px;
+}
+/* --------- */
+/* css of add new post  */
+.post input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.post button {
+  background-color: #5b5e5c;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.post button:hover {
+  background-color: #494d49;
+}
+
+.btn3{display: inline-block;
+outline: 0;
+border: 0;
+cursor: pointer;
+background: #000000;
+color: #FFFFFF;
+border-radius: 8px;
+padding: 14px 24px 16px;
+font-size: 18px;
+font-weight: 700;
+line-height: 1;
+transition: transform 200ms,background 200ms;}
+.btn3:hover{
+    transform: translateY(-2px);
+}
+
+/* css of edit post */
+.edit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.edit input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.edit button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.edit button:hover {
+  background-color: #45a049;
 }

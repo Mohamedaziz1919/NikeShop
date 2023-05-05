@@ -60,7 +60,6 @@ function App() {
   return (
     <div>
      <AddPost AddShop={addShop}/> 
-     
     <Home data={data} deleteShop={deleteShop} updatePost={updatePost} getone={getone}/>
     </div>
   )

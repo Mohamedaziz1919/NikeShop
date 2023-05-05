@@ -1,5 +1,6 @@
+// import { ClassNames } from '@emotion/react';
 import React, { useState } from 'react'
-
+import "../App.css"
 function AddPost({ AddShop }) {
   const [show, setShow] = useState(false);
   const [image, setImage] = useState("");
@@ -30,10 +31,10 @@ function AddPost({ AddShop }) {
 
   return (
     <>
-      <button onClick={handleShow}>Add New Post</button>
+      <button onClick={handleShow} className='btn3'>Add New Post</button>
       {show && (
-        <div>
-          <>
+        <div className='post'>
+          < >
             <input placeholder='image' onChange={(e) => setImage(e.target.value)} />
             <input placeholder='producName' onChange={(e) => setProducName(e.target.value)} />
             <input placeholder='category' onChange={(e) => setCategory(e.target.value)} />

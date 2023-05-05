@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-
+import "../App.css"
 function Edit(props) {
     const [idposts, setIdposts] = useState(props.e.idposts);
     const [image, setImage] = useState(props.e.image);
@@ -24,7 +24,7 @@ function Edit(props) {
       // props.setShow(!props.show);
     };
   return (
-    <div>
+    <div className='edit'>
          {props.showEdit?(
     <div>
          <>
